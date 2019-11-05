@@ -28,7 +28,11 @@ namespace mysql.ms
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MySqlMasterDbContext>(options => options.UseMySql("server=192.168.137.2;uid=dev;password=1qaZ2wsX.;database=test;"));
-            services.AddDbContext<MySqlSlaveDbContext>(options => options.UseMySql("server=192.168.137.3;uid=dev;password=1qaZ2wsX.;database=test;"));
+            services.AddDbContext<MySqlSlaveDbContext>(options => 
+            {
+                //算法随机获取连接串
+                options.UseMySql("server=192.168.137.3;uid=dev;password=1qaZ2wsX.;database=test;");
+            });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();

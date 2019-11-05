@@ -43,7 +43,6 @@ namespace mysql.ms.DBContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //TODO 算法mysql串获取可以随机
             if (!string.IsNullOrEmpty(_conn))
             {
                 optionsBuilder.UseMySql(_conn);
